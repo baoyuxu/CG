@@ -1,0 +1,18 @@
+<Solution>
+  <PropertyGroup Name="CreateGalaxy" Version="3.10.0.0" Type="CocosStudio" />
+  <SolutionFolder>
+    <Group ctype="ResourceGroup">
+      <RootFolder Name=".">
+        <Folder Name="HelloWorld">
+          <Image Name="HelloWorld.png" />
+          <Project Name="MainScene.csd" Type="Scene" />
+        </Folder>
+        <Folder Name="StartScene">
+          <Image Name="background.jpg" />
+          <Image Name="logo.png" />
+          <Project Name="StartScene.csd" Type="Scene" />
+        </Folder>
+      </RootFolder>
+    </Group>
+  </SolutionFolder>
+</Solution>
