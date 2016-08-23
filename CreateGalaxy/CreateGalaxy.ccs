@@ -8,7 +8,7 @@
           <Project Name="MainScene.csd" Type="Scene" />
         </Folder>
         <Folder Name="StartScene">
-          <Image Name="background.jpg" />
+          <Image Name="background.png" />
           <Image Name="logo.png" />
           <Project Name="StartScene.csd" Type="Scene" />
         </Folder>
