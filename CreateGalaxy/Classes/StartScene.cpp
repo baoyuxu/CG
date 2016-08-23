@@ -7,10 +7,9 @@
 //
 
 #include "StartScene.h"
+#include "ChooseLevelScene.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
-
-USING_NS_CC;
 
 cocos2d::Scene * StartScene::createScene()
 {
@@ -35,23 +34,26 @@ bool StartScene::init()
     addChild(rootnode);
     logo = static_cast<Sprite*>( rootnode->getChildByName("logo") );
     
+    auto startLabel = Label::createWithTTF("Start", ".//fonts//Start.ttf", 70);
+    startLabel->setTextColor(Color4B::WHITE );
+    auto startLabelMenuItem = MenuItemLabel::create( startLabel);
+    startLabelMenuItem->setTarget(this, menu_selector( StartScene::onStartLabelMenuItemCallback ));
+    auto startLabelMenu = Menu::create( startLabelMenuItem, nullptr);
+    auto fadein = FadeIn::create(2);
+    auto fadeout = FadeOut::create(0);
+    startLabelMenu->runAction( Sequence::create(fadeout, fadein, nullptr) );
+    addChild(startLabelMenu);
+    
     logo->runAction( MoveTo::create(0.7, Vec2( logo->getPositionX() ,  0.75*Director::getInstance()->getVisibleSize().height ) ) );
-    
-    //logo->runAction( MoveTo::create(30, Vec2( logo->getPositionX() ,1.5* ( logo->getPositionY() ) ) ) );
-    
-    //    auto addTextureCallBack = [pTexNumber](Texture2D* texture)
-    //    {
-    //        ++( * pTexNumber );
-    //        log("Load a TexTure");
-    //    };
-    
-    //Director::getInstance()->getTextureCache()->addImageAsync("", addTextureCallBack);
     
     return true;
 }
 
-void StartScene::onTextureLoading(float dt)
+void StartScene::onStartLabelMenuItemCallback(Ref*)
 {
-    
+//    auto scene = ChooseLevelScene::createScene();
+//    Director::getInstance()->replaceScene(scene);
 }
+
+
 

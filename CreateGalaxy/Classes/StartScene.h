@@ -8,8 +8,9 @@
 
 #ifndef StartScene_h
 #define StartScene_h
-
 #include "cocos2d.h"
+
+USING_NS_CC;
 
 class StartScene : public cocos2d::Layer
 {
@@ -19,7 +20,7 @@ public:
     
     CREATE_FUNC(StartScene);
 private:
-    void onTextureLoading(float dt);
+    void onStartLabelMenuItemCallback(Ref*);
     cocos2d::Sprite * logo;
     int TextureNumber;
 };
