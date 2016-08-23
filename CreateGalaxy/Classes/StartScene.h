@@ -20,9 +20,12 @@ public:
     
     CREATE_FUNC(StartScene);
 private:
+    Sprite * logo;
+    Menu * startLabelMenu;
     void onStartLabelMenuItemCallback(Ref*);
-    cocos2d::Sprite * logo;
     int TextureNumber;
+    void initHasDown();
+    void onTextureLoading(float dt);
 };
 
 

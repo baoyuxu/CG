@@ -17,17 +17,6 @@
             <FileData Type="Normal" Path="StartScene/background.jpg" Plist="" />
             <BlendFunc Src="770" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="logo" ActionTag="-2144846600" Tag="5" IconVisible="False" LeftMargin="-12.8265" RightMargin="-51.1735" TopMargin="17.4337" BottomMargin="110.5663" ctype="SpriteObjectData">
-            <Size X="1024.0000" Y="512.0000" />
-            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="499.1735" Y="366.5663" />
-            <Scale ScaleX="0.8416" ScaleY="0.7341" />
-            <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.5200" Y="0.5728" />
-            <PreSize X="1.0667" Y="0.8000" />
-            <FileData Type="Normal" Path="StartScene/logo.png" Plist="" />
-            <BlendFunc Src="1" Dst="771" />
-          </AbstractNodeData>
         </Children>
       </ObjectData>
     </Content>
