@@ -21,8 +21,12 @@ public:
     CREATE_FUNC(StartScene);
 private:
     Sprite * logo;
-    Menu * startLabelMenu;
-    void onStartLabelMenuItemCallback(Ref*);
+    Menu * startSceneLabelMenu;
+    
+    void onStartLabelMenuItemCallback( Ref*);
+    void onHelpLabelMenuItemCallback( Ref*);
+    void onExitLabelMenuItemCallback( Ref*);
+    
     int TextureNumber;
     void initHasDown();
     void onTextureLoading(float dt);

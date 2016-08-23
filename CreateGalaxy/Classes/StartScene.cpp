@@ -8,6 +8,7 @@
 
 #include "StartScene.h"
 #include "ChooseLevelScene.h"
+#include "HelpScene.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 
@@ -43,25 +44,28 @@ bool StartScene::init()
     
     schedule(schedule_selector(StartScene::onTextureLoading));
     
-    
-//    logo = static_cast<Sprite*>( rootnode->getChildByName("logo") );
-    
-//    auto call = CallFunc::create(  [this](){
-//        logo->setTexture(Director::getInstance()->getTextureCache()->getTextureForKey(".//StartScene//logo.png"));
-//    }   );
-    
     return true;
 }
 
-void StartScene::onStartLabelMenuItemCallback(Ref*)
+void StartScene::onStartLabelMenuItemCallback( Ref* )
 {
 //    auto scene = ChooseLevelScene::createScene();
 //    Director::getInstance()->replaceScene(scene);
+    log("onStartLabelMenuItemCallback");
+}
+
+void StartScene::onHelpLabelMenuItemCallback( Ref* )
+{
+    log("onHelpLabelMenuItemCallback");
+}
+
+void StartScene::onExitLabelMenuItemCallback( Ref* )
+{
+    log("onExitLabelMenuItemCallback");
 }
 
 void StartScene::onTextureLoading(float dt)
 {
-    log("%f", dt);
     if( TextureNumber == 1 )
     {
         log("load Has Done");
@@ -72,22 +76,31 @@ void StartScene::onTextureLoading(float dt)
 
 void StartScene::initHasDown()
 {
+    Size visableSize = Director::getInstance()->getVisibleSize();
     logo = Sprite::createWithTexture( Director::getInstance()->getTextureCache()->getTextureForKey(".//StartScene//logo_1.png") ) ;
     logo->setVisible(false);
     addChild(logo);
     logo->setScale(.8, .6);
-    logo->setPosition(Vec2( Director::getInstance()->getVisibleSize().width / 2, Director::getInstance()->getVisibleSize().height / 2));
+    logo->setPosition(Vec2( visableSize.width / 2, visableSize.height / 2));
     auto call_1 = CallFunc::create( [this](){ logo->setVisible(true); } ) ;
-    logo->runAction( Sequence::create( FadeOut::create(0), call_1,FadeIn::create(1) , MoveTo::create(0.7, Vec2( logo->getPositionX() ,  0.75*Director::getInstance()->getVisibleSize().height ) ) ,  nullptr)  );
+    logo->runAction( Sequence::create( FadeOut::create(0), call_1,FadeIn::create(1.5) , MoveTo::create(0.7, Vec2( logo->getPositionX() ,  0.75*visableSize.height ) ) ,  nullptr)  );
     
     auto startLabel = Label::createWithTTF("Start", ".//fonts//Start.ttf", 70);
     startLabel->setTextColor(Color4B::WHITE );
-    auto startLabelMenuItem = MenuItemLabel::create( startLabel);
-    startLabelMenuItem->setTarget(this, menu_selector( StartScene::onStartLabelMenuItemCallback ));
-    startLabelMenu = Menu::create( startLabelMenuItem, nullptr);
-    startLabelMenu->setVisible(false);
-    addChild(startLabelMenu);
-    auto call_2 = CallFunc::create( [this](){ startLabelMenu->setVisible(true); } );
-    startLabelMenu->runAction( Sequence::create(FadeOut::create(0), call_2 ,DelayTime::create(1) ,FadeIn::create(2), nullptr) );
+    auto startLabelMenuItem = MenuItemLabel::create( startLabel, CC_CALLBACK_1(StartScene::onStartLabelMenuItemCallback, this));
+    auto helpLabel = Label::createWithTTF("Help", ".//fonts//Start.ttf", 70);
+    helpLabel->setTextColor(Color4B::WHITE);
+    auto helpLabelMenuItem = MenuItemLabel::create( helpLabel , CC_CALLBACK_1( StartScene::onHelpLabelMenuItemCallback, this ));
+    auto exitLabel = Label::createWithTTF("Exit", ".//fonts//Start.ttf", 70);
+    exitLabel->setTextColor(Color4B::WHITE);
+    auto exitLabelItem = MenuItemLabel::create( exitLabel , CC_CALLBACK_1(StartScene::onExitLabelMenuItemCallback, this)  );
+    
+    startSceneLabelMenu = Menu::create( helpLabelMenuItem ,startLabelMenuItem, exitLabelItem, nullptr);
+    startSceneLabelMenu->alignItemsHorizontallyWithPadding( visableSize.width / 7 );
+    startSceneLabelMenu->setPositionY( visableSize.height * 0.35 );
+    startSceneLabelMenu->setVisible(false);
+    addChild(startSceneLabelMenu);
+    auto call_2 = CallFunc::create( [this](){ startSceneLabelMenu->setVisible(true); } );
+    startSceneLabelMenu->runAction( Sequence::create(FadeOut::create(0), call_2 ,DelayTime::create(2) ,FadeIn::create(1.5), nullptr) );
 }
 
