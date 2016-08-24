@@ -19,7 +19,8 @@ public:
     
     CREATE_FUNC(ChooseLevelScene);
 private:
-    Menu * icon;
+    Menu * icon_0;
+    Menu * icon_1;
     
     void callBack1_0(Ref*);
     void callBack1_1(Ref*);

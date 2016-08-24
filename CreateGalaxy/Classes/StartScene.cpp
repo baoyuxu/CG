@@ -77,6 +77,7 @@ void StartScene::onHelpLabelMenuItemCallback( Ref* )
 void StartScene::onExitLabelMenuItemCallback( Ref* )
 {
     log("onExitLabelMenuItemCallback");
+    exit(0);
 }
 
 void StartScene::onTextureLoading(float dt)

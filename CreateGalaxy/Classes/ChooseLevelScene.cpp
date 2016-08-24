@@ -28,43 +28,41 @@ bool ChooseLevelScene::init()
         return  false;
     }
     
-    Vector<MenuItem*> menuItemSprites;
-    menuItemSprites.pushBack(
-    MenuItemSprite::create(Sprite::createWithTexture( Director::getInstance()->getTextureCache()->getTextureForKey(".//ChooseLevelScene//1_0.png") ),
-                           Sprite::createWithTexture( Director::getInstance()->getTextureCache()->getTextureForKey(".//ChooseLevelScene//1_0.png") ),
-                           CC_CALLBACK_1( ChooseLevelScene::callBack1_0 , this) ) );
+    Vector<MenuItem*> menuItemSprites_0;
+    Vector<MenuItem*> menuItemSprites_1;
+    menuItemSprites_0.pushBack(
+    MenuItemSprite::create( Sprite::createWithTexture( Director::getInstance()->getTextureCache()->getTextureForKey( ".//ChooseLevelScene//1_0.png" ) ),
+                            Sprite::createWithTexture( Director::getInstance()->getTextureCache()->getTextureForKey( ".//ChooseLevelScene//1_0.png" ) ),
+                            CC_CALLBACK_1( ChooseLevelScene::callBack1_0, this) ) );
+    menuItemSprites_0.pushBack(
+    MenuItemSprite::create( Sprite::createWithTexture( Director::getInstance()->getTextureCache()->getTextureForKey( ".//ChooseLevelScene//1_1.png" ) ),
+                            Sprite::createWithTexture( Director::getInstance()->getTextureCache()->getTextureForKey( ".//ChooseLevelScene//1_1.png" ) ),
+                            CC_CALLBACK_1( ChooseLevelScene::callBack1_1, this) ) );
+    menuItemSprites_0.pushBack(
+    MenuItemSprite::create( Sprite::createWithTexture( Director::getInstance()->getTextureCache()->getTextureForKey( ".//ChooseLevelScene//1_2.png" ) ),
+                            Sprite::createWithTexture( Director::getInstance()->getTextureCache()->getTextureForKey( ".//ChooseLevelScene//1_2.png" ) ),
+                            CC_CALLBACK_1( ChooseLevelScene::callBack1_2, this) ) );
+    menuItemSprites_1.pushBack(
+    MenuItemSprite::create( Sprite::createWithTexture( Director::getInstance()->getTextureCache()->getTextureForKey( ".//ChooseLevelScene//1_3.png" ) ),
+                            Sprite::createWithTexture( Director::getInstance()->getTextureCache()->getTextureForKey( ".//ChooseLevelScene//1_3.png" ) ),
+                            CC_CALLBACK_1( ChooseLevelScene::callBack1_3, this) ) );
+    menuItemSprites_1.pushBack(
+    MenuItemSprite::create( Sprite::createWithTexture( Director::getInstance()->getTextureCache()->getTextureForKey( ".//ChooseLevelScene//1_4.png" ) ),
+                            Sprite::createWithTexture( Director::getInstance()->getTextureCache()->getTextureForKey( ".//ChooseLevelScene//1_4.png" ) ),
+                            CC_CALLBACK_1( ChooseLevelScene::callBack1_4, this) ) );
+    menuItemSprites_1.pushBack(
+    MenuItemSprite::create( Sprite::createWithTexture( Director::getInstance()->getTextureCache()->getTextureForKey( ".//ChooseLevelScene//1_5.png" ) ),
+                            Sprite::createWithTexture( Director::getInstance()->getTextureCache()->getTextureForKey( ".//ChooseLevelScene//1_5.png" ) ),
+                            CC_CALLBACK_1( ChooseLevelScene::callBack1_5, this) ) );
+    icon_0 = Menu::createWithArray( menuItemSprites_0 );
+    icon_1 = Menu::createWithArray( menuItemSprites_1 );
+    icon_0->alignItemsHorizontallyWithPadding( Director::getInstance()->getVisibleSize().width / 10 );
+    icon_1->alignItemsHorizontallyWithPadding( Director::getInstance()->getVisibleSize().width / 10 );
+    icon_0->setPositionY( Director::getInstance()->getVisibleSize().height * 0.7 );
+    icon_1->setPositionY( Director::getInstance()->getVisibleSize().height * 0.35 );
+    addChild(icon_0);
+    addChild(icon_1);
     
-    menuItemSprites.pushBack(
-    MenuItemSprite::create(Sprite::createWithTexture( Director::getInstance()->getTextureCache()->getTextureForKey(".//ChooseLevelScene//1_1.png") ),
-                           Sprite::createWithTexture( Director::getInstance()->getTextureCache()->getTextureForKey(".//ChooseLevelScene//1_1.png") ),
-                           CC_CALLBACK_1( ChooseLevelScene::callBack1_1 , this) ) );
-    
-    menuItemSprites.pushBack(
-    MenuItemSprite::create(Sprite::createWithTexture( Director::getInstance()->getTextureCache()->getTextureForKey(".//ChooseLevelScene//1_2.png") ),
-                           Sprite::createWithTexture( Director::getInstance()->getTextureCache()->getTextureForKey(".//ChooseLevelScene//1_2.png") ),
-                           CC_CALLBACK_1( ChooseLevelScene::callBack1_2 , this) ) );
-    
-    menuItemSprites.pushBack(
-    MenuItemSprite::create(Sprite::createWithTexture( Director::getInstance()->getTextureCache()->getTextureForKey(".//ChooseLevelScene//1_3.png") ),
-                           Sprite::createWithTexture( Director::getInstance()->getTextureCache()->getTextureForKey(".//ChooseLevelScene//1_3.png") ),
-                           CC_CALLBACK_1( ChooseLevelScene::callBack1_3 , this) ) );
-    
-    menuItemSprites.pushBack(
-    MenuItemSprite::create(Sprite::createWithTexture( Director::getInstance()->getTextureCache()->getTextureForKey(".//ChooseLevelScene//1_4.png") ),
-                           Sprite::createWithTexture( Director::getInstance()->getTextureCache()->getTextureForKey(".//ChooseLevelScene//1_4.png") ),
-                           CC_CALLBACK_1( ChooseLevelScene::callBack1_4 , this) ) );
-    
-    menuItemSprites.pushBack(
-    MenuItemSprite::create(Sprite::createWithTexture( Director::getInstance()->getTextureCache()->getTextureForKey(".//ChooseLevelScene//1_5.png") ),
-                           Sprite::createWithTexture( Director::getInstance()->getTextureCache()->getTextureForKey(".//ChooseLevelScene//1_5.png") ),
-                           CC_CALLBACK_1( ChooseLevelScene::callBack1_5 , this) ) );
-    
-    icon = Menu::createWithArray( menuItemSprites );
-    //icon->alignItemsInRows( 2, 2, 2, nullptr);
-    //icon->alignItemsInColumns( 3, 3, nullptr );
-    //icon->alignItemsVerticallyWithPadding( Director::getInstance()->getVisibleSize().height / 10 );
-    //icon->alignItemsHorizontallyWithPadding( Director::getInstance()->getVisibleSize().width / 200 );
-    addChild(icon);
     return true;
 }
 
