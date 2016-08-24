@@ -37,11 +37,25 @@ bool StartScene::init()
     auto addTextureCallback = [pTextureNum](Texture2D* texture)
     {
         (*pTextureNum)++;
-        log("load the logo");
+        log("load a Texture");
     };
 
-    Director::getInstance()->getTextureCache()->addImageAsync( ".//StartScene//logo_1.png" , addTextureCallback );
-    
+    Director::getInstance()->getTextureCache()->addImageAsync(".//StartScene//logo_1.png" , addTextureCallback );
+    Director::getInstance()->getTextureCache()->addImageAsync(".//ChooseLevelScene//1_0.png", addTextureCallback);
+    Director::getInstance()->getTextureCache()->addImageAsync(".//ChooseLevelScene//1_1.png", addTextureCallback);
+    Director::getInstance()->getTextureCache()->addImageAsync(".//ChooseLevelScene//1_2.png", addTextureCallback);
+    Director::getInstance()->getTextureCache()->addImageAsync(".//ChooseLevelScene//1_3.png", addTextureCallback);
+    Director::getInstance()->getTextureCache()->addImageAsync(".//ChooseLevelScene//1_4.png", addTextureCallback);
+    Director::getInstance()->getTextureCache()->addImageAsync(".//ChooseLevelScene//1_5.png", addTextureCallback);
+    Director::getInstance()->getTextureCache()->addImageAsync(".//ChooseLevelScene//2_0.png", addTextureCallback);
+    Director::getInstance()->getTextureCache()->addImageAsync(".//ChooseLevelScene//2_1.png", addTextureCallback);
+    Director::getInstance()->getTextureCache()->addImageAsync(".//ChooseLevelScene//2_2.png", addTextureCallback);
+    Director::getInstance()->getTextureCache()->addImageAsync(".//ChooseLevelScene//2_3.png", addTextureCallback);
+    Director::getInstance()->getTextureCache()->addImageAsync(".//ChooseLevelScene//2_4.png", addTextureCallback);
+    Director::getInstance()->getTextureCache()->addImageAsync(".//ChooseLevelScene//2_5.png", addTextureCallback);
+    Director::getInstance()->getTextureCache()->addImageAsync(".//ChooseLevelScene//ArrowRight.png", addTextureCallback);
+    Director::getInstance()->getTextureCache()->addImageAsync(".//ChooseLevelScene//ArrowLeft.png", addTextureCallback);
+
     schedule(schedule_selector(StartScene::onTextureLoading));
     
     return true;
@@ -49,8 +63,9 @@ bool StartScene::init()
 
 void StartScene::onStartLabelMenuItemCallback( Ref* )
 {
-//    auto scene = ChooseLevelScene::createScene();
-//    Director::getInstance()->replaceScene(scene);
+    auto scene = ChooseLevelScene::createScene();
+    Director::getInstance()->pushScene( scene );
+    //Director::getInstance()->replaceScene(scene);
     log("onStartLabelMenuItemCallback");
 }
 
@@ -66,7 +81,7 @@ void StartScene::onExitLabelMenuItemCallback( Ref* )
 
 void StartScene::onTextureLoading(float dt)
 {
-    if( TextureNumber == 1 )
+    if( TextureNumber == 15 )
     {
         log("load Has Done");
         unschedule(schedule_selector(StartScene::onTextureLoading));
@@ -83,17 +98,17 @@ void StartScene::initHasDown()
     logo->setScale(.8, .6);
     logo->setPosition(Vec2( visableSize.width / 2, visableSize.height / 2));
     auto call_1 = CallFunc::create( [this](){ logo->setVisible(true); } ) ;
-    logo->runAction( Sequence::create( FadeOut::create(0), call_1,FadeIn::create(1.5) , MoveTo::create(0.7, Vec2( logo->getPositionX() ,  0.75*visableSize.height ) ) ,  nullptr)  );
+    logo->runAction( Sequence::create( FadeOut::create(0), call_1, FadeIn::create(1.5), MoveTo::create(0.7, Vec2( logo->getPositionX(),  0.75*visableSize.height)),  nullptr)  );
     
     auto startLabel = Label::createWithTTF("Start", ".//fonts//Start.ttf", 70);
     startLabel->setTextColor(Color4B::WHITE );
-    auto startLabelMenuItem = MenuItemLabel::create( startLabel, CC_CALLBACK_1(StartScene::onStartLabelMenuItemCallback, this));
+    auto startLabelMenuItem = MenuItemLabel::create( startLabel, CC_CALLBACK_1( StartScene::onStartLabelMenuItemCallback, this));
     auto helpLabel = Label::createWithTTF("Help", ".//fonts//Start.ttf", 70);
     helpLabel->setTextColor(Color4B::WHITE);
     auto helpLabelMenuItem = MenuItemLabel::create( helpLabel , CC_CALLBACK_1( StartScene::onHelpLabelMenuItemCallback, this ));
     auto exitLabel = Label::createWithTTF("Exit", ".//fonts//Start.ttf", 70);
     exitLabel->setTextColor(Color4B::WHITE);
-    auto exitLabelItem = MenuItemLabel::create( exitLabel , CC_CALLBACK_1(StartScene::onExitLabelMenuItemCallback, this)  );
+    auto exitLabelItem = MenuItemLabel::create( exitLabel , CC_CALLBACK_1( StartScene::onExitLabelMenuItemCallback, this)  );
     
     startSceneLabelMenu = Menu::create( helpLabelMenuItem ,startLabelMenuItem, exitLabelItem, nullptr);
     startSceneLabelMenu->alignItemsHorizontallyWithPadding( visableSize.width / 7 );
@@ -101,6 +116,6 @@ void StartScene::initHasDown()
     startSceneLabelMenu->setVisible(false);
     addChild(startSceneLabelMenu);
     auto call_2 = CallFunc::create( [this](){ startSceneLabelMenu->setVisible(true); } );
-    startSceneLabelMenu->runAction( Sequence::create(FadeOut::create(0), call_2 ,DelayTime::create(2) ,FadeIn::create(1.5), nullptr) );
+    startSceneLabelMenu->runAction( Sequence::create(FadeOut::create(0), call_2, DelayTime::create(2), FadeIn::create(1.5), nullptr) );
 }
 

@@ -18,6 +18,15 @@ public:
     virtual bool init();
     
     CREATE_FUNC(ChooseLevelScene);
+private:
+    Menu * icon;
+    
+    void callBack1_0(Ref*);
+    void callBack1_1(Ref*);
+    void callBack1_2(Ref*);
+    void callBack1_3(Ref*);
+    void callBack1_4(Ref*);
+    void callBack1_5(Ref*);
 };
 
 #endif /* ChooseLevelScene_h */
