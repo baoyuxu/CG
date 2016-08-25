@@ -87,7 +87,7 @@ void StartScene::onHelpLabelMenuItemCallback( Ref* )
 void StartScene::onExitLabelMenuItemCallback( Ref* )
 {
     log("onExitLabelMenuItemCallback");
-    exit(0);
+    Director::getInstance()->end();
 }
 
 void StartScene::onTextureLoading(float dt)
@@ -114,19 +114,32 @@ void StartScene::initHasDown()
     auto startLabel = Label::createWithTTF("Start", ".//fonts//Start.ttf", 70);
     startLabel->setTextColor(Color4B::WHITE );
     auto startLabelMenuItem = MenuItemLabel::create( startLabel, CC_CALLBACK_1( StartScene::onStartLabelMenuItemCallback, this));
-    auto helpLabel = Label::createWithTTF("Help", ".//fonts//Start.ttf", 70);
-    helpLabel->setTextColor(Color4B::WHITE);
-    auto helpLabelMenuItem = MenuItemLabel::create( helpLabel , CC_CALLBACK_1( StartScene::onHelpLabelMenuItemCallback, this ));
-    auto exitLabel = Label::createWithTTF("Exit", ".//fonts//Start.ttf", 70);
-    exitLabel->setTextColor(Color4B::WHITE);
-    auto exitLabelItem = MenuItemLabel::create( exitLabel , CC_CALLBACK_1( StartScene::onExitLabelMenuItemCallback, this)  );
+//    auto helpLabel = Label::createWithTTF("Help", ".//fonts//Start.ttf", 70);
+//    helpLabel->setTextColor(Color4B::WHITE);
+//    auto helpLabelMenuItem = MenuItemLabel::create( helpLabel , CC_CALLBACK_1( StartScene::onHelpLabelMenuItemCallback, this ));
+//    auto exitLabel = Label::createWithTTF("Exit", ".//fonts//Start.ttf", 70);
+//    exitLabel->setTextColor(Color4B::WHITE);
+//    auto exitLabelItem = MenuItemLabel::create( exitLabel , CC_CALLBACK_1( StartScene::onExitLabelMenuItemCallback, this)  );
     
-    startSceneLabelMenu = Menu::create( helpLabelMenuItem ,startLabelMenuItem, exitLabelItem, nullptr);
+//    startSceneLabelMenu = Menu::create( helpLabelMenuItem ,startLabelMenuItem, exitLabelItem, nullptr);
+    startSceneLabelMenu = Menu::create( startLabelMenuItem, nullptr );
     startSceneLabelMenu->alignItemsHorizontallyWithPadding( visableSize.width / 7 );
     startSceneLabelMenu->setPositionY( visableSize.height * 0.35 );
     startSceneLabelMenu->setVisible(false);
+    
+    auto helpItem = MenuItemImage::create( ".//StartScene//help.png", ".//StartScene//help.png", CC_CALLBACK_1( StartScene::onHelpLabelMenuItemCallback, this ) );
+    auto exitItem = MenuItemImage::create( ".//StartScene//exit.png", ".//StartScene//exit.png", CC_CALLBACK_1( StartScene::onExitLabelMenuItemCallback, this ) );
+    startSceneImageMenu = Menu::create( helpItem, exitItem, nullptr);
+    startSceneImageMenu->setScale( 0.1 );
+    startSceneImageMenu->setPosition( Vec2( visableSize.width * 0.5, - visableSize.height * 0.4 ) );
+    startSceneImageMenu->setVisible(false);
+    startSceneImageMenu->alignItemsHorizontally();
+    
     addChild(startSceneLabelMenu);
+    addChild(startSceneImageMenu);
     auto call_2 = CallFunc::create( [this](){ startSceneLabelMenu->setVisible(true); } );
+    auto call_3 = CallFunc::create( [this](){ startSceneImageMenu->setVisible(true); } );
     startSceneLabelMenu->runAction( Sequence::create(FadeOut::create(0), call_2, DelayTime::create(2), FadeIn::create(1.5), nullptr) );
+    startSceneImageMenu->runAction( Sequence::create(FadeOut::create(0), call_3, DelayTime::create(2), FadeIn::create(1.5), nullptr) );
 }
 

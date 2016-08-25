@@ -24,6 +24,7 @@ public:
 private:
     Sprite * logo;
     Menu * startSceneLabelMenu;
+    Menu * startSceneImageMenu;
     
     void onStartLabelMenuItemCallback( Ref*);
     void onHelpLabelMenuItemCallback( Ref*);
