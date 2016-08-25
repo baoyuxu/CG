@@ -15,6 +15,8 @@ USING_NS_CC;
 class StartScene : public cocos2d::Layer
 {
 public:
+    StartScene();
+    virtual ~StartScene();
     static cocos2d::Scene * createScene();
     bool init();
     

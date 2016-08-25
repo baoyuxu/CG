@@ -15,6 +15,8 @@ USING_NS_CC;
 class HelpScene : public cocos2d::Layer
 {
 public:
+    HelpScene();
+    virtual ~HelpScene();
     static cocos2d::Scene* createScene();
     virtual bool init();
     

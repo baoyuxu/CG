@@ -13,6 +13,16 @@
 
 #include <vector>
 
+ChooseLevelScene::ChooseLevelScene()
+{
+    
+}
+
+ChooseLevelScene::~ChooseLevelScene()
+{
+    
+}
+
 cocos2d::Scene * ChooseLevelScene::createScene()
 {
     auto scene = Scene::create();
@@ -63,6 +73,37 @@ bool ChooseLevelScene::init()
     addChild(icon_0);
     addChild(icon_1);
     
+    
+//    auto ArrowRight = Menu::createWithItem(
+//                    MenuItemSprite::create(
+//                                           Sprite::createWithTexture( Director::getInstance()->getTextureCache()->getTextureForKey(".//ChooseLevelScene//ArrowRight.png")) ,
+//                                           Sprite::createWithTexture( Director::getInstance()->getTextureCache()->getTextureForKey(".//ChooseLevelScene//ArrowRight.png")),
+//                                           CC_CALLBACK_1( ChooseLevelScene::callBackRightArrow, this) ));
+//    ArrowRight->setPosition( Vec2( Director::getInstance()->getVisibleSize().width * 0.85, Director::getInstance()->getVisibleSize().height * 0.45 ) );
+//    ArrowRight->setScale( 0.8 );
+//    addChild( ArrowRight );
+    
+    auto RightArrow = cocos2d::ui::Button::create( ".//ChooseLevelScene//ArrowRight.png" );
+    RightArrow->setPosition( Vec2( Director::getInstance()->getVisibleSize().width * 0.95, Director::getInstance()->getVisibleSize().height / 2 ) );
+    RightArrow->Widget::setScale( 0.8 );
+    RightArrow->addTouchEventListener(
+                                      [&](Ref* sender, cocos2d::ui::Widget::TouchEventType type)
+                                      {
+                                          switch ( type )
+                                          {
+                                              case ui::Widget::TouchEventType::BEGAN:
+                                                  log( "RightArrow" );
+                                                  Director::getInstance()->replaceScene( TransitionSlideInL::create( .5, ChooseLevelScene_1::createScene() ) );
+                                                  break;
+//                                              case ui::Widget::TouchEventType::ENDED:
+//                                                  break;
+//                                              case ui::Widget::TouchEventType::CANCELED:
+//                                                  break;
+//                                              case ui::Widget::TouchEventType::MOVED:
+//                                                  break;
+                                          }
+                                      } );
+    addChild(RightArrow);
     return true;
 }
 
@@ -96,4 +137,11 @@ void ChooseLevelScene::callBack1_5(Ref*)
     log("callBack1_5");
 }
 
+void ChooseLevelScene::callBackRightArrow(Ref*)
+{
+    log("Right");
+    auto scene = ChooseLevelScene_1::createScene();
+    //Director::getInstance()->replaceScene( scene );
+    TransitionMoveInL::create( 2, scene );
+}
 

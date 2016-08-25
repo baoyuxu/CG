@@ -8,12 +8,15 @@
 
 #ifndef ChooseLevelScene_h
 #define ChooseLevelScene_h
+
 #include "cocos2d.h"
 USING_NS_CC;
 
 class ChooseLevelScene : public Layer
 {
 public:
+    ChooseLevelScene();
+    virtual ~ChooseLevelScene();
     static cocos2d::Scene* createScene();
     virtual bool init();
     
@@ -22,6 +25,7 @@ private:
     Menu * icon_0;
     Menu * icon_1;
     
+    void callBackRightArrow(Ref*);
     void callBack1_0(Ref*);
     void callBack1_1(Ref*);
     void callBack1_2(Ref*);

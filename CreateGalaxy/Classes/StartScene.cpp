@@ -12,6 +12,16 @@
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 
+StartScene::StartScene()
+{
+    
+}
+
+StartScene::~StartScene()
+{
+    
+}
+
 cocos2d::Scene * StartScene::createScene()
 {
     auto scene = Scene::create();
@@ -37,7 +47,7 @@ bool StartScene::init()
     auto addTextureCallback = [pTextureNum](Texture2D* texture)
     {
         (*pTextureNum)++;
-        log("load a Texture");
+        log("load %d Texture", *pTextureNum );
     };
 
     Director::getInstance()->getTextureCache()->addImageAsync(".//StartScene//logo_1.png" , addTextureCallback );
