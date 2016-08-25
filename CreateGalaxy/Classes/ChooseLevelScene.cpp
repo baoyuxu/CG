@@ -95,15 +95,21 @@ bool ChooseLevelScene::init()
                                                   log( "RightArrow" );
                                                   Director::getInstance()->replaceScene( TransitionSlideInL::create( .5, ChooseLevelScene_1::createScene() ) );
                                                   break;
-//                                              case ui::Widget::TouchEventType::ENDED:
-//                                                  break;
-//                                              case ui::Widget::TouchEventType::CANCELED:
-//                                                  break;
-//                                              case ui::Widget::TouchEventType::MOVED:
-//                                                  break;
+                                              case ui::Widget::TouchEventType::ENDED:
+                                                  break;
+                                              case ui::Widget::TouchEventType::CANCELED:
+                                                  break;
+                                              case ui::Widget::TouchEventType::MOVED:
+                                                  break;
                                           }
                                       } );
     addChild(RightArrow);
+    
+    auto backLabel = Label::createWithTTF( "Back" , ".//fonts//Start.ttf" , 50);
+    backLabel->setTextColor( Color4B::WHITE );
+    Menu * backMenu = Menu::createWithItem( MenuItemLabel::create( backLabel, CC_CALLBACK_1( ChooseLevelScene::callBackBack, this) ) );
+    backMenu->setPosition( Vec2( Director::getInstance()->getVisibleSize().width * 0.95 , Director::getInstance()->getVisibleSize().height * 0.04) );
+    addChild(backMenu);
     return true;
 }
 
@@ -137,11 +143,9 @@ void ChooseLevelScene::callBack1_5(Ref*)
     log("callBack1_5");
 }
 
-void ChooseLevelScene::callBackRightArrow(Ref*)
+void ChooseLevelScene::callBackBack(Ref*)
 {
-    log("Right");
-    auto scene = ChooseLevelScene_1::createScene();
-    //Director::getInstance()->replaceScene( scene );
-    TransitionMoveInL::create( 2, scene );
+    log("Back_0");
+    Director::getInstance()->popScene();
 }
 

@@ -25,6 +25,7 @@ private:
     Menu * icon_0;
     Menu * icon_1;
     
+    void callBackBack(Ref*);
     void callBack2_0(Ref*);
     void callBack2_1(Ref*);
     void callBack2_2(Ref*);

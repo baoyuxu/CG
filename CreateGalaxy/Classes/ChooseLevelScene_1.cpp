@@ -26,7 +26,6 @@ cocos2d::Scene * ChooseLevelScene_1::createScene()
     auto scene = Scene::create();
     auto layer = ChooseLevelScene_1::create();
     scene->addChild(layer);
-    log( "ChooseLevelScene_1" );
     return scene;
 }
 
@@ -37,7 +36,6 @@ bool ChooseLevelScene_1::init()
         return false;
     }
     
-    log( "ChooseLevelScene_1::init()" );
     Vector<MenuItem*> menuItemSprites_0;
     Vector<MenuItem*> menuItemSprites_1;
     menuItemSprites_0.pushBack(
@@ -95,6 +93,12 @@ bool ChooseLevelScene_1::init()
                                       } );
     
     addChild(LeftArrow);
+    
+    auto backLabel = Label::createWithTTF( "Back" , ".//fonts//Start.ttf" , 50);
+    backLabel->setTextColor( Color4B::WHITE );
+    Menu * backMenu = Menu::createWithItem( MenuItemLabel::create( backLabel, CC_CALLBACK_1( ChooseLevelScene_1::callBackBack, this) ) );
+    backMenu->setPosition( Vec2( Director::getInstance()->getVisibleSize().width * 0.95 , Director::getInstance()->getVisibleSize().height * 0.04) );
+    addChild(backMenu);
     return true;
 }
 
@@ -126,3 +130,10 @@ void ChooseLevelScene_1::callBack2_5(Ref*)
 {
     
 }
+
+void ChooseLevelScene_1::callBackBack(Ref*)
+{
+    log("Back_1");
+    Director::getInstance()->popScene();
+}
+
