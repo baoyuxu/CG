@@ -8,6 +8,7 @@
 
 #include "ChooseLevelScene.h"
 #include "ChooseLevelScene_1.h"
+#include "GamingScene.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 

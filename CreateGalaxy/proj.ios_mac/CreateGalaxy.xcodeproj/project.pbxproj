@@ -34,6 +34,7 @@
 		67264650BD08F5A9E8B7ED1D /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D65417CAF89D7ADE4119FEC /* libcocos2d iOS.a */; };
 		6CC743B7AEC6C4A1F5FEC304 /* res in Resources */ = {isa = PBXBuildFile; fileRef = 01F741B993AED8B544209AD5 /* res */; };
 		6E2C6EAE1D6D453900A2179E /* ChooseLevelScene_1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E2C6EAD1D6D453900A2179E /* ChooseLevelScene_1.cpp */; };
+		6E61944F1D700283003461C5 /* GamingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E61944E1D700283003461C5 /* GamingScene.cpp */; };
 		6E7C62DB1D6BED5200DA2465 /* ChooseLevelScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E7C62DA1D6BED5200DA2465 /* ChooseLevelScene.cpp */; };
 		6E93FFD11D6B3095008174B2 /* StartScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E93FFD01D6B3095008174B2 /* StartScene.cpp */; };
 		6EC887B11D6C7C7100A1BCDB /* HelpScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6EC887B01D6C7C7100A1BCDB /* HelpScene.cpp */; };
@@ -80,6 +81,8 @@
 		5D65417CAF89D7ADE4119FEC /* libcocos2d iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcocos2d iOS.a"; path = "/Applications/Cocos/Cocos2d-x/cocos2d-x-3.10/prebuilt/ios/libcocos2d iOS.a"; sourceTree = "<absolute>"; };
 		6E2C6EAD1D6D453900A2179E /* ChooseLevelScene_1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChooseLevelScene_1.cpp; sourceTree = "<group>"; };
 		6E2C6EAF1D6D454200A2179E /* ChooseLevelScene_1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseLevelScene_1.h; sourceTree = "<group>"; };
+		6E61944E1D700283003461C5 /* GamingScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GamingScene.cpp; sourceTree = "<group>"; };
+		6E6194501D700294003461C5 /* GamingScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GamingScene.h; sourceTree = "<group>"; };
 		6E7C62DA1D6BED5200DA2465 /* ChooseLevelScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ChooseLevelScene.cpp; sourceTree = "<group>"; };
 		6E7C62DC1D6BED6100DA2465 /* ChooseLevelScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseLevelScene.h; sourceTree = "<group>"; };
 		6E93FFD01D6B3095008174B2 /* StartScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StartScene.cpp; sourceTree = "<group>"; };
@@ -230,6 +233,8 @@
 				6E93FFD01D6B3095008174B2 /* StartScene.cpp */,
 				6EC887B21D6C7C7C00A1BCDB /* HelpScene.h */,
 				6EC887B01D6C7C7100A1BCDB /* HelpScene.cpp */,
+				6E6194501D700294003461C5 /* GamingScene.h */,
+				6E61944E1D700283003461C5 /* GamingScene.cpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -377,6 +382,7 @@
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				6E7C62DB1D6BED5200DA2465 /* ChooseLevelScene.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
+				6E61944F1D700283003461C5 /* GamingScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				6E93FFD11D6B3095008174B2 /* StartScene.cpp in Sources */,
 				6EC887B11D6C7C7100A1BCDB /* HelpScene.cpp in Sources */,
@@ -559,7 +565,7 @@
 					"/Applications/Cocos/Cocos2d-x/cocos2d-x-3.10/external",
 					"/Applications/Cocos/Cocos2d-x/cocos2d-x-3.10/external/chipmunk/include/chipmunk",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -589,7 +595,7 @@
 					"/Applications/Cocos/Cocos2d-x/cocos2d-x-3.10/external",
 					"/Applications/Cocos/Cocos2d-x/cocos2d-x-3.10/external/chipmunk/include/chipmunk",
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";

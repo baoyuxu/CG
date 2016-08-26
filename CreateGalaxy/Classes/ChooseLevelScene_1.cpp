@@ -8,6 +8,7 @@
 
 #include "ChooseLevelScene.h"
 #include "ChooseLevelScene_1.h"
+#include "GamingScene.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 
@@ -107,31 +108,31 @@ bool ChooseLevelScene_1::init()
 
 void ChooseLevelScene_1::callBack2_0(Ref*)
 {
-    
+    log("2_0");
 }
 
 void ChooseLevelScene_1::callBack2_1(Ref*)
 {
-    
+    log("2_1");
 }
 
 void ChooseLevelScene_1::callBack2_2(Ref*)
 {
-    
+    log("2_2");
 }
 void ChooseLevelScene_1::callBack2_3(Ref*)
 {
-    
+    log("2_3");
 }
 
 void ChooseLevelScene_1::callBack2_4(Ref*)
 {
-    
+    log("2_4");
 }
 
 void ChooseLevelScene_1::callBack2_5(Ref*)
 {
-    
+    log("2_5");
 }
 
 void ChooseLevelScene_1::callBackBack(Ref*)
