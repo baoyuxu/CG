@@ -10,10 +10,13 @@
         <AndroidVersion Value="android-10" />
         <iOS_Target Value="CreateGalaxy-mobile" />
         <iOS_BundleID Value="iPhone Developer: wenze5056655@icloud.com (WYL8SL6S2F)" />
-        <Platform Value="None" />
-        <RunPlatform Value="None" />
+        <Platform Value="Android" />
+        <RunPlatform Value="Android" />
         <FrameworkVersion Value="cocos2d-x-3.10" />
         <IsDebugKeystore Value="True" />
+        <KeystorePassword Value="" />
+        <KeystoreAliasName Value="" />
+        <KeystoreAliasPassword Value="" />
         <EnableSourceMap Value="False" />
         <EnableHTML5Advanced Value="False" />
       </Value>

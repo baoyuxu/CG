@@ -38,6 +38,9 @@ bool ChooseLevelScene::init()
         return  false;
     }
     
+    auto rootnode = CSLoader::createNode(".//ChooseLevelScene//ChooseLevelScene.csb");
+    addChild(rootnode);
+    
     Vector<MenuItem*> menuItemSprites_0;
     Vector<MenuItem*> menuItemSprites_1;
     menuItemSprites_0.pushBack(
@@ -85,7 +88,7 @@ bool ChooseLevelScene::init()
     
     auto RightArrow = cocos2d::ui::Button::create( ".//ChooseLevelScene//ArrowRight.png" );
     RightArrow->setPosition( Vec2( Director::getInstance()->getVisibleSize().width * 0.95, Director::getInstance()->getVisibleSize().height / 2 ) );
-    RightArrow->Widget::setScale( 0.8 );
+    RightArrow->Widget::setScale( 0.3 );
     RightArrow->addTouchEventListener(
                                       [&](Ref* sender, cocos2d::ui::Widget::TouchEventType type)
                                       {

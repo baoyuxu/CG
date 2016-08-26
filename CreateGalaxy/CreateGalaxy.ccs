@@ -19,7 +19,9 @@
           <Image Name="ArrowLeft.png" />
           <Image Name="ArrowRight.png" />
           <Image Name="background.png" />
+          <Image Name="ChooseLevelBackgroud.jpg" />
           <Project Name="ChooseLevelScene.csd" Type="Scene" />
+          <Project Name="ChooseLevelScene_1.csd" Type="Scene" />
         </Folder>
         <Folder Name="HelloWorld">
           <Image Name="HelloWorld.png" />
