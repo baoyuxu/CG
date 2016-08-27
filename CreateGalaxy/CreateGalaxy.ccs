@@ -1,37 +1,10 @@
 <Solution>
-  <PropertyGroup Name="CreateGalaxy" Version="3.10.0.0" Type="CocosStudio" />
+  <PropertyGroup Name="CreateGalaxy" Version="2.1.0.0" Type="CocosStudio" />
   <SolutionFolder>
     <Group ctype="ResourceGroup">
       <RootFolder Name=".">
-        <Folder Name="ChooseLevelScene">
-          <Image Name="1_0.png" />
-          <Image Name="1_1.png" />
-          <Image Name="1_2.png" />
-          <Image Name="1_3.png" />
-          <Image Name="1_4.png" />
-          <Image Name="1_5.png" />
-          <Image Name="2_0.png" />
-          <Image Name="2_1.png" />
-          <Image Name="2_2.png" />
-          <Image Name="2_3.png" />
-          <Image Name="2_4.png" />
-          <Image Name="2_5.png" />
-          <Image Name="ArrowLeft.png" />
-          <Image Name="ArrowRight.png" />
-          <Image Name="background.png" />
-          <Image Name="ChooseLevelBackgroud.jpg" />
-          <Project Name="ChooseLevelScene.csd" Type="Scene" />
-          <Project Name="ChooseLevelScene_1.csd" Type="Scene" />
-        </Folder>
-        <Folder Name="HelloWorld">
-          <Image Name="HelloWorld.png" />
-          <Project Name="MainScene.csd" Type="Scene" />
-        </Folder>
-        <Folder Name="StartScene">
-          <Image Name="background.png" />
-          <Image Name="logo.png" />
-          <Project Name="StartScene.csd" Type="Scene" />
-        </Folder>
+        <Image Name="HelloWorld.png" />
+        <Project Name="MainScene.csd" Type="Scene" />
       </RootFolder>
     </Group>
   </SolutionFolder>
