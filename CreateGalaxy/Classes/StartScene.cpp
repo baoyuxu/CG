@@ -2,7 +2,7 @@
 //  StartScene.cpp
 //  Create_Galaxy
 //
-//  Created by 温泽 on 2016/8/22.
+//  Created by Thomas and his friends on 2016/8/22.
 //
 //
 
@@ -65,6 +65,7 @@ bool StartScene::init()
     Director::getInstance()->getTextureCache()->addImageAsync(".//ChooseLevelScene//2_5.png", addTextureCallback);
     Director::getInstance()->getTextureCache()->addImageAsync(".//ChooseLevelScene//ArrowRight.png", addTextureCallback);
     Director::getInstance()->getTextureCache()->addImageAsync(".//ChooseLevelScene//ArrowLeft.png", addTextureCallback);
+	Director::getInstance()->getTextureCache()->addImageAsync(".//GamingScene//1_0//aroundStar.png", addTextureCallback);
 
     schedule(schedule_selector(StartScene::onTextureLoading));
     
@@ -92,7 +93,7 @@ void StartScene::onExitLabelMenuItemCallback( Ref* )
 
 void StartScene::onTextureLoading(float dt)
 {
-    if( TextureNumber == 15 )
+    if( TextureNumber == 16 )
     {
         log("load Has Done");
         unschedule(schedule_selector(StartScene::onTextureLoading));

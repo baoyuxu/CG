@@ -1,6 +1,11 @@
-<UserData>
-  <OpenedDocuments>
-    <FilePathData Path="MainScene.csd" />
-  </OpenedDocuments>
-  <ActiveDocument Path="MainScene.csd" />
+<UserData Version="3.10.0.0">
+  <Properties>
+    <Item Key="CocosRecentOperation">
+      <Value ctype="CocosRecentOperation">
+        <LastPublishType Value="Resource" />
+        <IsLastPublish Value="True" />
+        <LastRunType Value="Windows" />
+      </Value>
+    </Item>
+  </Properties>
 </UserData>

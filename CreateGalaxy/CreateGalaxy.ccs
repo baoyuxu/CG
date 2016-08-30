@@ -1,10 +1,52 @@
 <Solution>
-  <PropertyGroup Name="CreateGalaxy" Version="2.1.0.0" Type="CocosStudio" />
+  <PropertyGroup Name="CreateGalaxy" Version="3.10.0.0" Type="CocosStudio" />
   <SolutionFolder>
     <Group ctype="ResourceGroup">
       <RootFolder Name=".">
-        <Image Name="HelloWorld.png" />
-        <Project Name="MainScene.csd" Type="Scene" />
+        <Folder Name="ChooseLevelScene">
+          <Image Name="1_0.png" />
+          <Image Name="1_1.png" />
+          <Image Name="1_2.png" />
+          <Image Name="1_3.png" />
+          <Image Name="1_4.png" />
+          <Image Name="1_5.png" />
+          <Image Name="2_0.png" />
+          <Image Name="2_1.png" />
+          <Image Name="2_2.png" />
+          <Image Name="2_3.png" />
+          <Image Name="2_4.png" />
+          <Image Name="2_5.png" />
+          <Image Name="ArrowLeft.png" />
+          <Image Name="ArrowRight.png" />
+          <Image Name="background.png" />
+          <Image Name="ChooseLevelBackgroud.jpg" />
+          <File Name="ChooseLevelScene.csb" />
+          <File Name="ChooseLevelScene_1.csb" />
+        </Folder>
+        <Folder Name="fonts">
+          <TTF Name="Start.ttf" />
+        </Folder>
+        <Folder Name="GamingScene">
+          <Folder Name="1_0">
+            <Image Name="aroundStar.png" />
+            <Image Name="centerStar.png" />
+            <Project Name="GamingScene1_0.csd" Type="Scene" />
+            <Image Name="Lined.jpg" />
+            <Image Name="unLined.jpg" />
+          </Folder>
+        </Folder>
+        <Folder Name="HelloWorld">
+          <Image Name="HelloWorld.png" />
+          <File Name="MainScene.csb" />
+        </Folder>
+        <Folder Name="StartScene">
+          <Image Name="background.png" />
+          <Image Name="exit.png" />
+          <Image Name="help.png" />
+          <Image Name="logo.png" />
+          <Image Name="logo_1.png" />
+          <File Name="StartScene.csb" />
+        </Folder>
       </RootFolder>
     </Group>
   </SolutionFolder>

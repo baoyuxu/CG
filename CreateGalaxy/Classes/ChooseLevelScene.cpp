@@ -2,7 +2,7 @@
 //  ChooseLevelScene.cpp
 //  CreateGalaxy
 //
-//  Created by 温泽 on 2016/8/23.
+//  Created by Thomas and his friends on 2016/8/23.
 //
 //
 
@@ -119,6 +119,7 @@ bool ChooseLevelScene::init()
 
 void ChooseLevelScene::callBack1_0(Ref*)
 {
+	Director::getInstance()->replaceScene(GamingScene::createScene(0, 0));
     log("callBack1_0");
 }
 

@@ -2,7 +2,7 @@
 //  ChooseLevelScene_1.h
 //  CreateGalaxy
 //
-//  Created by 温泽 on 2016/8/24.
+//  Created by Thomas and his friends on 2016/8/24.
 //
 //
 
