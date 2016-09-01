@@ -5,7 +5,6 @@
 //  Created by Thomas and his friends on 2016/8/26.
 //
 //
-
 #include "GamingSCene.h"
 #include "Star.h"
 #include "cocostudio/CocoStudio.h"
