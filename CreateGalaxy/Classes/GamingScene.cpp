@@ -74,39 +74,44 @@ bool GamingScene::init(int _sceneNumber, int _levelNumber)
 	for (int i = 0; i < starNumber[sceneNumber][levelNumber]; ++i)
 	{
 		starSprite.push_back(Star::create());
-		starSprite.back()->setAnchorPoint( Vec2(2,1) );
+		starSprite.back()->setScale(0.5f);
 		starSprite.back()->setVisible(false);
-		starSprite.back()->setPosition(500,500 );
-		starSprite.back()->runAction(RepeatForever::create( Sequence::createWithTwoActions(RotateTo::create(2, 180),RotateTo::create(2,0))));
+		starSprite.back()->setPosition(rootnode->getChildByTag(1)->getPosition());
+		starSprite.back()->setAnchorPoint(Vec2( ((rootnode->getChildByTag(1)->getPositionX() - rootnode->getChildByTag(0)->getPositionX()) / (starSprite.back()->getContentSize().width) * 2.5) , 0.5f));
+		//starSprite.back()->setAnchorPoint(Vec2(-2.0, 0.5f));
+		//starSprite.back()->runAction(RepeatForever::create( Sequence::createWithTwoActions(RotateTo::create(2, 180),RotateTo::create(2,0))));
+		starSprite.back()->runAction(RepeatForever::create(RotateBy::create(4, 360)));
 		addChild(starSprite.back()); 
 		log("starSprite");
+		
 	}
+	starSprite.back()->setVisible(true);
 
 	return true;
 }
- 
+
 bool GamingScene::judgeAimed()
 {
 	std::vector<cocos2d::Node*>::iterator it;
 	for ( it = starAimNode.begin(); it <= starAimNode.end(); ++it)
 	{
-		//if (  )
-		//{
 
-		//}
 	}
 	return true;
 }
 
-bool GamingScene::onTouchBegan(Touch *touch, Event *unused_event)
+bool GamingScene::onTouchBegan(Touch* pTouch, Event* pEvent)
 {
+	log("??????????????");
 	if ( !GamingScene::isFlying )
 	{
 		starSprite.back()->launch();
 		isFlying = true;
+		log("touched");
 	}
-	else if( GamingScene::isFlying )
+	else //if( GamingScene::isFlying )
 	{
+		log("touched with else");
 		starSprite.back()->stop();
 		isFlying = false;
 		judgeAimed();

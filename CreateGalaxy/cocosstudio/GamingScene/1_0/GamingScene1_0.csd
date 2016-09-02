@@ -17,26 +17,15 @@
             <FileData Type="Normal" Path="GamingScene/1_0/unLined.jpg" Plist="" />
             <BlendFunc Src="770" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="centerStar" ActionTag="1926393114" Tag="1" IconVisible="False" LeftMargin="380.4491" RightMargin="147.5509" TopMargin="251.0062" BottomMargin="-76.0062" ctype="SpriteObjectData">
+          <AbstractNodeData Name="centerStar" ActionTag="1926393114" Tag="1" IconVisible="False" LeftMargin="380.4500" RightMargin="147.5500" TopMargin="251.0100" BottomMargin="-76.0100" ctype="SpriteObjectData">
             <Size X="432.0000" Y="465.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-            <Position X="596.4491" Y="156.4938" />
+            <Position X="596.4500" Y="156.4900" />
             <Scale ScaleX="0.1843" ScaleY="0.1906" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.6213" Y="0.2445" />
             <PreSize X="0.4500" Y="0.7266" />
             <FileData Type="Normal" Path="GamingScene/1_0/centerStar.png" Plist="" />
-            <BlendFunc Src="1" Dst="771" />
-          </AbstractNodeData>
-          <AbstractNodeData Name="aroundStar_5" ActionTag="-960874473" Tag="6" IconVisible="False" LeftMargin="469.1255" RightMargin="417.8745" TopMargin="428.3786" BottomMargin="136.6214" ctype="SpriteObjectData">
-            <Size X="73.0000" Y="75.0000" />
-            <AnchorPoint ScaleX="0.5208" ScaleY="0.3648" />
-            <Position X="507.1439" Y="163.9814" />
-            <Scale ScaleX="0.5585" ScaleY="0.5702" />
-            <CColor A="255" R="255" G="255" B="255" />
-            <PrePosition X="0.5283" Y="0.2562" />
-            <PreSize X="0.0760" Y="0.1172" />
-            <FileData Type="Normal" Path="GamingScene/1_0/aroundStar.png" Plist="" />
             <BlendFunc Src="1" Dst="771" />
           </AbstractNodeData>
           <AbstractNodeData Name="Node_1" ActionTag="-2049828047" Tag="100" IconVisible="True" LeftMargin="154.7163" RightMargin="805.2837" TopMargin="570.1249" BottomMargin="69.8751" ctype="SingleNodeObjectData">
@@ -48,10 +37,10 @@
             <PrePosition X="0.1612" Y="0.1092" />
             <PreSize X="0.0000" Y="0.0000" />
           </AbstractNodeData>
-          <AbstractNodeData Name="Node_2" ActionTag="-332610648" Tag="101" IconVisible="True" LeftMargin="216.9515" RightMargin="743.0485" TopMargin="320.8006" BottomMargin="319.1994" ctype="SingleNodeObjectData">
+          <AbstractNodeData Name="Node_2" ActionTag="-332610648" Tag="101" IconVisible="True" LeftMargin="216.9515" RightMargin="743.0485" TopMargin="320.8007" BottomMargin="319.1993" ctype="SingleNodeObjectData">
             <Size X="0.0000" Y="0.0000" />
             <AnchorPoint />
-            <Position X="216.9515" Y="319.1994" />
+            <Position X="216.9515" Y="319.1993" />
             <Scale ScaleX="2.9643" ScaleY="2.5917" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.2260" Y="0.4987" />
@@ -82,6 +71,15 @@
             <Scale ScaleX="2.1049" ScaleY="2.1985" />
             <CColor A="255" R="255" G="255" B="255" />
             <PrePosition X="0.8054" Y="0.5270" />
+            <PreSize X="0.0000" Y="0.0000" />
+          </AbstractNodeData>
+          <AbstractNodeData Name="Node_6" ActionTag="-1577213601" IconVisible="True" LeftMargin="529.4875" RightMargin="430.5125" TopMargin="483.5100" BottomMargin="156.4900" ctype="SingleNodeObjectData">
+            <Size X="0.0000" Y="0.0000" />
+            <AnchorPoint />
+            <Position X="529.4875" Y="156.4900" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition X="0.5515" Y="0.2445" />
             <PreSize X="0.0000" Y="0.0000" />
           </AbstractNodeData>
         </Children>

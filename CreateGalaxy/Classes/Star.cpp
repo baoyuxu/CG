@@ -36,7 +36,11 @@ bool Star::init()
 
 void Star::launch()
 {
-
+	this->stopAllActions();
+	float rotation = this->getRotation();
+	this->setPosition( this->getAnchorPointInPoints() );
+	this->runAction( MoveBy::create(2, Vec2(500,500)));
+	log("launch");
 }
 
 void Star::stop()

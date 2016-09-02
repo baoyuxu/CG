@@ -23,7 +23,23 @@ public:
     static cocos2d::Scene* createScene(int sceneNumber, int levelNumber);
     virtual bool init(int sceneNumber, int levelNumber);
     
-	CREATE_FUNC_XU(GamingScene);
+	static GamingScene* create(int sceneNumber, int levelNumber) 
+	{ 
+		GamingScene *pRet = new(std::nothrow) GamingScene(); 
+		if (pRet && pRet->init(sceneNumber, levelNumber)) 
+		{ 
+			pRet->autorelease(); 
+			return pRet; 
+		} 
+		else 
+		{ 
+			delete pRet;
+			pRet = nullptr; 
+			return nullptr; 
+		} 
+	}
+
+	//CREATE_FUNC_XU(GamingScene);
 
 private:
 	static const std::string levelChoose[2][3];
@@ -38,7 +54,7 @@ private:
 	std::vector<cocos2d::Node*> starAimNode;
 	std::map<cocos2d::Node*, Star*> starStarMap;
 
-	bool onTouchBegan(Touch *touch, Event *unused_event);
+	bool onTouchBegan(Touch*, Event*);
 	bool judgeAimed();
 };
 
