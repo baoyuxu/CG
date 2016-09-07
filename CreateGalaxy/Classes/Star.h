@@ -13,6 +13,9 @@ public:
 	void launch();
 	void stop();
 	void disappear();
+
+
+
 private:
 	bool init();
 	float speed;

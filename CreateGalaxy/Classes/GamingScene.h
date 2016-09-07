@@ -54,6 +54,7 @@ private:
 	std::vector<cocos2d::Node*> starAimNode;
 	std::map<cocos2d::Node*, Star*> starStarMap;
 
+	void starLaunch();
 	bool onTouchBegan(Touch*, Event*);
 	bool judgeAimed();
 };

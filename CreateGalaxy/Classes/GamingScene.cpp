@@ -43,6 +43,14 @@ bool GamingScene::init(int _sceneNumber, int _levelNumber)
 	auto rootnode = CSLoader::createNode(levelChoose[sceneNumber][levelNumber]);
 	addChild(rootnode);
 
+	auto dispatcher = Director::getInstance()->getEventDispatcher();
+	auto listener = EventListenerTouchOneByOne::create();
+	listener->onTouchBegan = CC_CALLBACK_2(Layer::onTouchBegan, this);
+	listener->onTouchMoved = CC_CALLBACK_2(Layer::onTouchMoved, this);
+	listener->onTouchEnded = CC_CALLBACK_2(Layer::onTouchEnded, this);
+	listener->setSwallowTouches(true);
+	dispatcher->addEventListenerWithSceneGraphPriority(listener, this);
+
 	isFlying = false;
 	minX = minY = minDistance = FLT_MAX;
 
@@ -77,7 +85,7 @@ bool GamingScene::init(int _sceneNumber, int _levelNumber)
 		starSprite.back()->setScale(0.5f);
 		starSprite.back()->setVisible(false);
 		starSprite.back()->setPosition(rootnode->getChildByTag(1)->getPosition());
-		starSprite.back()->setAnchorPoint(Vec2( ((rootnode->getChildByTag(1)->getPositionX() - rootnode->getChildByTag(0)->getPositionX()) / (starSprite.back()->getContentSize().width) * 2.5) , 0.5f));
+		//starSprite.back()->setAnchorPoint(Vec2( ((rootnode->getChildByTag(1)->getPositionX() - rootnode->getChildByTag(0)->getPositionX()) / (starSprite.back()->getContentSize().width) * 2.5) , 0.5f));
 		//starSprite.back()->setAnchorPoint(Vec2(-2.0, 0.5f));
 		//starSprite.back()->runAction(RepeatForever::create( Sequence::createWithTwoActions(RotateTo::create(2, 180),RotateTo::create(2,0))));
 		starSprite.back()->runAction(RepeatForever::create(RotateBy::create(4, 360)));
@@ -102,19 +110,24 @@ bool GamingScene::judgeAimed()
 
 bool GamingScene::onTouchBegan(Touch* pTouch, Event* pEvent)
 {
-	log("??????????????");
 	if ( !GamingScene::isFlying )
 	{
-		starSprite.back()->launch();
+		starLaunch();
 		isFlying = true;
 		log("touched");
 	}
-	else //if( GamingScene::isFlying )
+	else if( GamingScene::isFlying )
 	{
 		log("touched with else");
-		starSprite.back()->stop();
+		//starSprite.back()->stop();
 		isFlying = false;
-		judgeAimed();
+		//judgeAimed();
 	}
 	return true;
+}
+
+void GamingScene::starLaunch()
+{
+	starSprite.back()->stopAllActions();
+
 }

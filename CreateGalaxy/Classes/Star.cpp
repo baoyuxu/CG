@@ -38,8 +38,9 @@ void Star::launch()
 {
 	this->stopAllActions();
 	float rotation = this->getRotation();
-	this->setPosition( this->getAnchorPointInPoints() );
-	this->runAction( MoveBy::create(2, Vec2(500,500)));
+	this->setPosition(this->getAnchorPointInPoints());
+	this->setAnchorPoint(Vec2(0.5, 0.5));
+	//this->runAction( MoveBy::create(2, Vec2(500,500)));
 	log("launch");
 }
 
