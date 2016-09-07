@@ -50,6 +50,7 @@ private:
 	float minDistance;
 	float minX;
 	float minY;
+	cocos2d::Node* layerNode;
 	std::vector<Star*> starSprite;
 	std::vector<cocos2d::Node*> starAimNode;
 	std::map<cocos2d::Node*, Star*> starStarMap;
