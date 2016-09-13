@@ -9,6 +9,7 @@
 #include "Star.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
+#include "CircleAction.h"
 #include <iostream>
 #include <cmath>
 
@@ -60,7 +61,7 @@ bool GamingScene::init(int _sceneNumber, int _levelNumber)
 	{
 		starAimNode.push_back(rootnode->getChildByTag(j));
 		starAimNode.back()->setContentSize(Size(10, 10));
-		log("starAimNode");
+		//log("starAimNode");
 	}
 
 	for (std::vector<cocos2d::Node*>::iterator it1 = starAimNode.begin(); it1 != starAimNode.end(); ++it1)
@@ -86,11 +87,12 @@ bool GamingScene::init(int _sceneNumber, int _levelNumber)
 		starSprite.push_back(Star::create());
 		starSprite.back()->setScale(0.5f);
 		starSprite.back()->setVisible(false);
-		starSprite.back()->setPosition(rootnode->getChildByTag(1)->getPosition());
-		starSprite.back()->setAnchorPoint(Vec2( ((rootnode->getChildByTag(1)->getPositionX() - rootnode->getChildByTag(0)->getPositionX()) / (starSprite.back()->getContentSize().width) * 2.5) , 0.5f));
-		starSprite.back()->runAction(RepeatForever::create(RotateBy::create(4, 360)));
+		//starSprite.back()->setPosition(rootnode->getChildByTag(1)->getPosition());
+		//starSprite.back()->setAnchorPoint(Vec2( ((rootnode->getChildByTag(1)->getPositionX() - rootnode->getChildByTag(0)->getPositionX()) / (starSprite.back()->getContentSize().width) * 2.5) , 0.5f));
+		//starSprite.back()->runAction(RepeatForever::create(RotateBy::create(4, 360)));
+		starSprite.back()->runAction(RepeatForever::create(CircleMoveAction::create(3.14, rootnode->getChildByTag(1)->getPosition(), 50, 360, 20)));
 		addChild(starSprite.back()); 
-		log("starSprite");
+		//log("starSprite");
 		
 	}
 	starSprite.back()->setVisible(true);
@@ -113,14 +115,15 @@ bool GamingScene::onTouchBegan(Touch* pTouch, Event* pEvent)
 	if ( !GamingScene::isFlying )
 	{
 		starLaunch();
-		//isFlying = true;
-		log("touched");
+		isFlying = true;
+		//log("touched");
 	}
 	else if( GamingScene::isFlying )
 	{
-		log("touched with else");
+		//log("touched with else");
 		//starSprite.back()->stop();
 		isFlying = false;
+		Director::getInstance()->replaceScene(GamingScene::createScene(0, 0));
 		//judgeAimed();
 	}
 	return true;
@@ -128,10 +131,10 @@ bool GamingScene::onTouchBegan(Touch* pTouch, Event* pEvent)
 
 void GamingScene::starLaunch()
 {
-	log("Launch");
 	auto rotation = starSprite.back()->getRotation();
+	log("%f \n", rotation);
 	starSprite.back()->stopAllActions();
-	starSprite.back()->setAnchorPoint(Vec2(0.5, 0.5));
-	log("%f %f\n", starSprite.back()->getAnchorPointInPoints().x, starSprite.back()->getAnchorPointInPoints().y);
-	auto starLength = starSprite.back()->getAnchorPointInPoints().getLength();
+	//starSprite.back()->runAction(MoveBy::create(3, Vec2((starSprite.back()->getPositionX() + 1000 * std::sin(CC_RADIANS_TO_DEGREES(rotation))), (starSprite.back()->getPositionY() + 1000 * std::cos(CC_RADIANS_TO_DEGREES(rotation))))));
+	starSprite.back()->runAction(MoveBy::create(3, Vec2((starSprite.back()->getPositionX() + 1000 * std::sin(CC_RADIANS_TO_DEGREES(rotation))), (starSprite.back()->getPositionY() + 1000 * std::cos(CC_RADIANS_TO_DEGREES(rotation))))));
+
 }
