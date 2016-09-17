@@ -62,7 +62,7 @@ bool GamingScene::init(int _sceneNumber, int _levelNumber)
 	{
 		starAimNode.push_back(rootnode->getChildByTag(j));
 		starAimNode.back()->setContentSize(Size(10, 10));
-		//log("starAimNode");
+		starStarMap[starAimNode.back()] = nullptr;
 	}
 
 	for (std::vector<cocos2d::Node*>::iterator it1 = starAimNode.begin(); it1 != starAimNode.end(); ++it1)
@@ -83,7 +83,7 @@ bool GamingScene::init(int _sceneNumber, int _levelNumber)
 		starSprite.back()->setScale(0.5f);
 		starSprite.back()->setVisible(false);
 		starSprite.back()->runAction(RepeatForever::create(RotateBy::create(5, 360)));
-		act = CircleMoveAction::create(2, rootnode->getChildByTag(1)->getPosition(), 60, 360, 20);
+		act = CircleMoveAction::create(5, rootnode->getChildByTag(1)->getPosition(), 60, 360, 20);
 		starSprite.back()->runAction(RepeatForever::create(act));
 		addChild(starSprite.back());
 	}
@@ -99,14 +99,12 @@ bool GamingScene::onTouchBegan(Touch* pTouch, Event* pEvent)
 	{
 		starLaunch();
 		isFlying = true;
-		//log("touched");
 	}
 	else if( GamingScene::isFlying )
 	{
 		isFlying = false;
-		//Director::getInstance()->replaceScene(GamingScene::createScene(0, 0));
 		starSprite.back()->stop();
-		judgeAimed();
+		computerAim(judgeAimed());
 	}
 	return true;
 }
@@ -118,7 +116,7 @@ void GamingScene::starLaunch()
 	auto starPosion = starSprite.back()->getPosition();
 	auto size = Director::getInstance()->getVisibleSize();
 	starSprite.back()->runAction(RepeatForever::create(RotateBy::create(3, 360)));
-	starSprite.back()->runAction(MoveTo::create(1, layerNode->getChildByTag(1)->getPosition() + 15*(starSprite.back()->getPosition() - layerNode->getChildByTag(1)->getPosition())));
+	starSprite.back()->runAction(MoveTo::create(3, layerNode->getChildByTag(1)->getPosition() + 15*(starSprite.back()->getPosition() - layerNode->getChildByTag(1)->getPosition())));
 }
 
 void GamingScene::computerAim(std::vector<cocos2d::Node*>::iterator it)
@@ -126,15 +124,37 @@ void GamingScene::computerAim(std::vector<cocos2d::Node*>::iterator it)
 	if (it == starAimNode.end() ) 
 	{
 		starSprite.back()->disappear();
-		starSprite.pop_back();
 	}
 	else
 	{
 		auto dis = ((*it)->getPositionX() - starSprite.back()->getPositionX()) * ((*it)->getPositionX() - starSprite.back()->getPositionX()) +
 			       ((*it)->getPositionY() - starSprite.back()->getPositionY()) * ((*it)->getPositionY() - starSprite.back()->getPositionY()) ;
-		score += static_cast<int>(dis / minDistance * 100);
-		starSprite.pop_back();
+		if ( starStarMap[*it] == nullptr )
+		{
+			starWithDistacne *p = new starWithDistacne;
+			p->star = starSprite.back();
+			p->dis = dis;
+			starStarMap[*it] = p;
+			delete p;
+			score += static_cast<int>(dis / minDistance * 100);
+		}
+		else
+		{
+			if (starStarMap[*it]->dis > dis)
+			{
+				starStarMap[*it]->star->disappear();
+				starStarMap[*it]->star = starSprite.back();
+				starStarMap[*it]->dis = dis;
+				score += static_cast<int>(dis / minDistance * 100);
+			}
+			else
+			{
+				starSprite.back()->disappear();
+			}
+		}
 	}
+	starSprite.pop_back();
+	starSprite.back()->setVisible(true);
 }
 
 std::vector<cocos2d::Node*>::iterator GamingScene::judgeAimed()

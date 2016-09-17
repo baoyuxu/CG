@@ -42,5 +42,5 @@ void Star::stop()
 
 void Star::disappear()
 {
-
+	this->setVisible(false);
 }

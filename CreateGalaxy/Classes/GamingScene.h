@@ -18,27 +18,17 @@
 
 USING_NS_CC;
 
+typedef struct 
+{
+	Star* star;
+	float dis;
+} starWithDistacne;
+
 class GamingScene : public Layer
 {
 public:
     static cocos2d::Scene* createScene(int sceneNumber, int levelNumber);
     virtual bool init(int sceneNumber, int levelNumber);
-    
-	//static GamingScene* create(int sceneNumber, int levelNumber) 
-	//{ 
-	//	GamingScene *pRet = new(std::nothrow) GamingScene(); 
-	//	if (pRet && pRet->init(sceneNumber, levelNumber)) 
-	//	{ 
-	//		pRet->autorelease(); 
-	//		return pRet; 
-	//	} 
-	//	else 
-	//	{ 
-	//		delete pRet;
-	//		pRet = nullptr; 
-	//		return nullptr; 
-	//	} 
-	//}
 
 	CREATE_FUNC_XU(GamingScene);
 
@@ -53,7 +43,7 @@ private:
 	cocos2d::Node* layerNode;
 	std::vector<Star*> starSprite;
 	std::vector<cocos2d::Node*> starAimNode;
-	std::map<cocos2d::Node*, Star*> starStarMap;
+	std::map<cocos2d::Node*, starWithDistacne*> starStarMap;
 	CircleMoveAction * act;
 
 	void starLaunch();

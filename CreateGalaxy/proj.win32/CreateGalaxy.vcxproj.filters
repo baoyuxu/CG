@@ -42,6 +42,9 @@
     <ClCompile Include="..\Classes\CircleAction.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="starCol.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -72,6 +75,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\CircleAction.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="starCol.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
