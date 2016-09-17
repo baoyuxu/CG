@@ -24,33 +24,32 @@ public:
     static cocos2d::Scene* createScene(int sceneNumber, int levelNumber);
     virtual bool init(int sceneNumber, int levelNumber);
     
-	static GamingScene* create(int sceneNumber, int levelNumber) 
-	{ 
-		GamingScene *pRet = new(std::nothrow) GamingScene(); 
-		if (pRet && pRet->init(sceneNumber, levelNumber)) 
-		{ 
-			pRet->autorelease(); 
-			return pRet; 
-		} 
-		else 
-		{ 
-			delete pRet;
-			pRet = nullptr; 
-			return nullptr; 
-		} 
-	}
+	//static GamingScene* create(int sceneNumber, int levelNumber) 
+	//{ 
+	//	GamingScene *pRet = new(std::nothrow) GamingScene(); 
+	//	if (pRet && pRet->init(sceneNumber, levelNumber)) 
+	//	{ 
+	//		pRet->autorelease(); 
+	//		return pRet; 
+	//	} 
+	//	else 
+	//	{ 
+	//		delete pRet;
+	//		pRet = nullptr; 
+	//		return nullptr; 
+	//	} 
+	//}
 
-	//CREATE_FUNC_XU(GamingScene);
+	CREATE_FUNC_XU(GamingScene);
 
 private:
 	static const std::string levelChoose[2][3];
 	static const int starNumber[2][3];
 	int sceneNumber;
 	int levelNumber;
+	int score;
 	bool isFlying;
 	float minDistance;
-	float minX;
-	float minY;
 	cocos2d::Node* layerNode;
 	std::vector<Star*> starSprite;
 	std::vector<cocos2d::Node*> starAimNode;
@@ -59,7 +58,8 @@ private:
 
 	void starLaunch();
 	bool onTouchBegan(Touch*, Event*);
-	bool judgeAimed();
+	void computerAim(std::vector<cocos2d::Node*>::iterator it);
+	std::vector<cocos2d::Node*>::iterator judgeAimed();
 };
 
 

@@ -10,11 +10,8 @@ public:
 	~Star();
 	static Star * create();
 	//Vec2 getPosition();
-	void launch();
 	void stop();
 	void disappear();
-
-
 
 private:
 	bool init();
