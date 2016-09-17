@@ -18,8 +18,6 @@ CircleMoveAction* CircleMoveAction::create(float duration, const cocos2d::Point&
 
 bool CircleMoveAction::initWithDuration(float duration, const cocos2d::Point& center, float radius, float angle, float moveTimes)
 {
-	//    log(">>>>>>>>%f", duration);  
-
 	if (CCActionInterval::initWithDuration(duration * 2))
 	{
 		this->m_circleCenter = center;
@@ -30,8 +28,6 @@ bool CircleMoveAction::initWithDuration(float duration, const cocos2d::Point& ce
 
 		this->m_radian = angle / duration * Director::getInstance()->getAnimationInterval() / (180 / M_PI);
 
-		//        log(">>>>>>>%f", 1.0f/Director::getInstance()->getAnimationInterval());  
-
 		return true;
 	}
 	return false;
@@ -40,7 +36,6 @@ bool CircleMoveAction::initWithDuration(float duration, const cocos2d::Point& ce
 void CircleMoveAction::startWithTarget(cocos2d::Node *target)
 {
 	CCActionInterval::startWithTarget(target);
-	//    m_initPos = _target->getPosition();  
 }
 
 
@@ -55,4 +50,25 @@ void CircleMoveAction::update(float dt)
 	_target->setPosition(newPoint);
 
 	m_moveTimes++;
+}
+
+float CircleMoveAction::getAngle()
+{
+	return m_angle*m_moveTimes;
+}
+float CircleMoveAction::getRadian()
+{
+	return m_duration;
+}
+float CircleMoveAction::getMovetime()
+{
+	return m_moveTimes;
+}
+Point CircleMoveAction::getCenter()
+{
+	return m_circleCenter;
+}
+float CircleMoveAction::getRadious()
+{
+	return m_circleRadius;
 }

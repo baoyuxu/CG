@@ -87,13 +87,10 @@ bool GamingScene::init(int _sceneNumber, int _levelNumber)
 		starSprite.push_back(Star::create());
 		starSprite.back()->setScale(0.5f);
 		starSprite.back()->setVisible(false);
-		//starSprite.back()->setPosition(rootnode->getChildByTag(1)->getPosition());
-		//starSprite.back()->setAnchorPoint(Vec2( ((rootnode->getChildByTag(1)->getPositionX() - rootnode->getChildByTag(0)->getPositionX()) / (starSprite.back()->getContentSize().width) * 2.5) , 0.5f));
-		//starSprite.back()->runAction(RepeatForever::create(RotateBy::create(4, 360)));
-		starSprite.back()->runAction(RepeatForever::create(CircleMoveAction::create(3.14, rootnode->getChildByTag(1)->getPosition(), 50, 360, 20)));
-		addChild(starSprite.back()); 
-		//log("starSprite");
-		
+		starSprite.back()->runAction(RepeatForever::create(RotateBy::create(5, 360)));
+		act = CircleMoveAction::create(2, rootnode->getChildByTag(1)->getPosition(), 60, 360, 20);
+		starSprite.back()->runAction(RepeatForever::create(act));
+		addChild(starSprite.back());
 	}
 	starSprite.back()->setVisible(true);
 
@@ -131,10 +128,12 @@ bool GamingScene::onTouchBegan(Touch* pTouch, Event* pEvent)
 
 void GamingScene::starLaunch()
 {
-	auto rotation = starSprite.back()->getRotation();
-	log("%f \n", rotation);
 	starSprite.back()->stopAllActions();
-	//starSprite.back()->runAction(MoveBy::create(3, Vec2((starSprite.back()->getPositionX() + 1000 * std::sin(CC_RADIANS_TO_DEGREES(rotation))), (starSprite.back()->getPositionY() + 1000 * std::cos(CC_RADIANS_TO_DEGREES(rotation))))));
-	starSprite.back()->runAction(MoveBy::create(3, Vec2((starSprite.back()->getPositionX() + 1000 * std::sin(CC_RADIANS_TO_DEGREES(rotation))), (starSprite.back()->getPositionY() + 1000 * std::cos(CC_RADIANS_TO_DEGREES(rotation))))));
-
+	auto centerPosion = layerNode->getChildByTag(1)->getPosition();
+	auto starPosion = starSprite.back()->getPosition();
+	auto size = Director::getInstance()->getVisibleSize();
+	starSprite.back()->runAction(RepeatForever::create(RotateBy::create(3, 360)));
+	starSprite.back()->runAction(MoveTo::create(1, layerNode->getChildByTag(1)->getPosition() + 10*(starSprite.back()->getPosition() - layerNode->getChildByTag(1)->getPosition())));
+	//starSprite.back()->runAction( MoveBy::create(2, Vec2() ) );
+	//starSprite.back()->setPosition(layerNode->getChildByTag(1)->getPosition() + 2*(starSprite.back()->getPosition() - layerNode->getChildByTag(1)->getPosition()));
 }

@@ -17,7 +17,11 @@ public:
 
 public:
 	static CircleMoveAction* create(float duration, const cocos2d::Point& center, float radius, float angle, float moveTimes);
-
+	float getAngle();
+	float getRadian();
+	float getMovetime();
+	Point getCenter();
+	float getRadious();
 public:
 	//    CircleMoveAction();  
 	//    ~CircleMoveAction();  

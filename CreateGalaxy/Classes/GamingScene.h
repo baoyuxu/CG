@@ -14,6 +14,7 @@
 #include <map>
 #include "cocos2d.h"
 #include "Star.h"
+#include "CircleAction.h"
 
 USING_NS_CC;
 
@@ -54,6 +55,7 @@ private:
 	std::vector<Star*> starSprite;
 	std::vector<cocos2d::Node*> starAimNode;
 	std::map<cocos2d::Node*, Star*> starStarMap;
+	CircleMoveAction * act;
 
 	void starLaunch();
 	bool onTouchBegan(Touch*, Event*);
