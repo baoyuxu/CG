@@ -32,6 +32,8 @@ public:
     virtual bool init(int sceneNumber, int levelNumber);
 	std::vector<Star*> starSprite;
 	virtual void update(float delta);
+
+	void gameEnd();
 	CREATE_FUNC_XU(GamingScene);
 
 private:
@@ -40,6 +42,7 @@ private:
 	int sceneNumber;
 	int levelNumber;
 	int score;
+	int starLeftNumber;
 	bool isFlying;
 	float minDistance;
 	cocos2d::Node* layerNode;

@@ -39,6 +39,8 @@ bool GamingScene::init(int _sceneNumber, int _levelNumber)
 	{
 		return false;
 	}
+	this->starLeftNumber = starNumber[sceneNumber][levelNumber];
+
 	this->sceneNumber = _sceneNumber;
 	this->levelNumber = _levelNumber;
 	auto rootnode = CSLoader::createNode(levelChoose[sceneNumber][levelNumber]);
@@ -75,9 +77,10 @@ bool GamingScene::init(int _sceneNumber, int _levelNumber)
 			(((*it1)->getPositionY() - (*it2)->getPositionY())*((*it1)->getPositionY() - (*it2)->getPositionY())) : minDistance ;
 		}
 	}
-	minDistance *= 0.8;
 
-	for (int i = 0; i < starNumber[sceneNumber][levelNumber]; ++i)
+	minDistance *= 0.1f;
+
+	for (int i = 0; i < starNumber[sceneNumber][levelNumber]+1; ++i)
 	{
 		starSprite.push_back(Star::create());
 		starSprite.back()->setScale(0.5f);
@@ -94,12 +97,25 @@ bool GamingScene::init(int _sceneNumber, int _levelNumber)
 
 void GamingScene::update(float delta)
 {
-	log("update");
 	Size size = Director::getInstance()->getVisibleSize();
 	Vec2 pos = starSprite.back()->getPosition();
 	if (pos.x < 0 || pos.y < 0 || pos.x > size.width || pos.y > size.height)
 	{
-		log("out\n");
+		isFlying = false;
+		starSprite.back()->disappear();
+		unscheduleUpdate();
+		starSprite.pop_back();
+
+		if (--starLeftNumber > 0)
+		{
+			starSprite.back()->setVisible(true);
+			scheduleUpdate();
+		}
+		else
+		{
+			this->gameEnd();
+		}
+		log("log");
 	}
 }
 
@@ -128,7 +144,6 @@ void GamingScene::starLaunch()
 	auto size = Director::getInstance()->getVisibleSize();
 	starSprite.back()->runAction(RepeatForever::create(RotateBy::create(3, 360)));
 	starSprite.back()->runAction(MoveTo::create(3, layerNode->getChildByTag(1)->getPosition() + 15*(starSprite.back()->getPosition() - layerNode->getChildByTag(1)->getPosition())));
-	//starSprite.back()->runAction(starCol::create(3));
 }
 
 
@@ -136,6 +151,7 @@ void GamingScene::computerAim(std::vector<cocos2d::Node*>::iterator it)
 {
 	if (it == starAimNode.end() ) 
 	{
+		log("end\n");
 		starSprite.back()->disappear();
 	}
 	else
@@ -144,31 +160,41 @@ void GamingScene::computerAim(std::vector<cocos2d::Node*>::iterator it)
 			       ((*it)->getPositionY() - starSprite.back()->getPositionY()) * ((*it)->getPositionY() - starSprite.back()->getPositionY()) ;
 		if ( starStarMap[*it] == nullptr )
 		{
+			log("nullptr");
 			starWithDistacne *p = new starWithDistacne;
 			p->star = starSprite.back();
 			p->dis = dis;
 			starStarMap[*it] = p;
-			delete p;
-			score += static_cast<int>(dis / minDistance * 100);
+			score += static_cast<int>(minDistance / dis * 100);
 		}
 		else
 		{
 			if (starStarMap[*it]->dis > dis)
 			{
+				log("replace");
+				auto a = starStarMap[*it]->dis;
+				auto b = dis;
 				starStarMap[*it]->star->disappear();
 				starStarMap[*it]->star = starSprite.back();
 				starStarMap[*it]->dis = dis;
 				score += static_cast<int>(dis / minDistance * 100);
 			}
 			else
-
 			{
+				auto a = starStarMap[*it]->dis;
+				auto b = dis;
+				log("not replace");
 				starSprite.back()->disappear();
 			}
 		}
 	}
+	unscheduleUpdate();
 	starSprite.pop_back();
-	starSprite.back()->setVisible(true);
+	scheduleUpdate();
+	if (--starLeftNumber > 0)
+		starSprite.back()->setVisible(true);
+	else
+		this->gameEnd();
 }
 
 std::vector<cocos2d::Node*>::iterator GamingScene::judgeAimed()
@@ -182,4 +208,12 @@ std::vector<cocos2d::Node*>::iterator GamingScene::judgeAimed()
 			return it;
 	}
 	return it;
+}
+
+
+void GamingScene::gameEnd()
+{
+	_eventDispatcher->removeAllEventListeners();
+	log("gameEnd");
+	layerNode->getChildByTag(1)->setVisible(false);
 }
