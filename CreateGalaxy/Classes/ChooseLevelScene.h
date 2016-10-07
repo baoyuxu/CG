@@ -8,6 +8,8 @@
 #define ChooseLevelScene_h
 
 #include "cocos2d.h"
+#include "GamingScene.h"
+
 USING_NS_CC;
 
 class ChooseLevelScene : public Layer

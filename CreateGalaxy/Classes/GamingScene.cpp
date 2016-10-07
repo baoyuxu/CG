@@ -88,8 +88,19 @@ bool GamingScene::init(int _sceneNumber, int _levelNumber)
 		addChild(starSprite.back());
 	}
 	starSprite.back()->setVisible(true);
-
+	scheduleUpdate();
 	return true;
+}
+
+void GamingScene::update(float delta)
+{
+	log("update");
+	Size size = Director::getInstance()->getVisibleSize();
+	Vec2 pos = starSprite.back()->getPosition();
+	if (pos.x < 0 || pos.y < 0 || pos.x > size.width || pos.y > size.height)
+	{
+		log("out\n");
+	}
 }
 
 
@@ -117,7 +128,9 @@ void GamingScene::starLaunch()
 	auto size = Director::getInstance()->getVisibleSize();
 	starSprite.back()->runAction(RepeatForever::create(RotateBy::create(3, 360)));
 	starSprite.back()->runAction(MoveTo::create(3, layerNode->getChildByTag(1)->getPosition() + 15*(starSprite.back()->getPosition() - layerNode->getChildByTag(1)->getPosition())));
+	//starSprite.back()->runAction(starCol::create(3));
 }
+
 
 void GamingScene::computerAim(std::vector<cocos2d::Node*>::iterator it)
 {
@@ -148,6 +161,7 @@ void GamingScene::computerAim(std::vector<cocos2d::Node*>::iterator it)
 				score += static_cast<int>(dis / minDistance * 100);
 			}
 			else
+
 			{
 				starSprite.back()->disappear();
 			}

@@ -15,6 +15,7 @@
 #include "cocos2d.h"
 #include "Star.h"
 #include "CircleAction.h"
+#include "starCol.h"
 
 USING_NS_CC;
 
@@ -29,7 +30,8 @@ class GamingScene : public Layer
 public:
     static cocos2d::Scene* createScene(int sceneNumber, int levelNumber);
     virtual bool init(int sceneNumber, int levelNumber);
-
+	std::vector<Star*> starSprite;
+	virtual void update(float delta);
 	CREATE_FUNC_XU(GamingScene);
 
 private:
@@ -41,7 +43,6 @@ private:
 	bool isFlying;
 	float minDistance;
 	cocos2d::Node* layerNode;
-	std::vector<Star*> starSprite;
 	std::vector<cocos2d::Node*> starAimNode;
 	std::map<cocos2d::Node*, starWithDistacne*> starStarMap;
 	CircleMoveAction * act;
@@ -51,6 +52,5 @@ private:
 	void computerAim(std::vector<cocos2d::Node*>::iterator it);
 	std::vector<cocos2d::Node*>::iterator judgeAimed();
 };
-
 
 #endif /* GamingScene_h */

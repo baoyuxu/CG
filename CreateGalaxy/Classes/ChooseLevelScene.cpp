@@ -8,7 +8,6 @@
 
 #include "ChooseLevelScene.h"
 #include "ChooseLevelScene_1.h"
-#include "GamingScene.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 
@@ -119,7 +118,8 @@ bool ChooseLevelScene::init()
 
 void ChooseLevelScene::callBack1_0(Ref*)
 {
-	Director::getInstance()->replaceScene(GamingScene::createScene(0, 0));
+	Scene * scene = GamingScene::createScene(0, 0);
+	Director::getInstance()->replaceScene(scene);
     log("callBack1_0");
 }
 
