@@ -16,6 +16,7 @@
 #include "Star.h"
 #include "CircleAction.h"
 #include "starCol.h"
+#include <iostream>
 
 USING_NS_CC;
 
@@ -34,7 +35,24 @@ public:
 	virtual void update(float delta);
 
 	void gameEnd();
-	CREATE_FUNC_XU(GamingScene);
+	//CREATE_FUNC_XU(GamingScene);
+
+	static GamingScene* create(int sceneNumber, int levelNumber) 
+	{ 
+		GamingScene *pRet = new(std::nothrow) GamingScene(); 
+		if (pRet && pRet->init(sceneNumber, levelNumber)) 
+		{ 
+			pRet->autorelease(); 
+			return pRet; 
+		} 
+		else 
+		{ 
+			delete pRet; 
+			pRet = nullptr; 
+			return nullptr; 
+		} 
+	}
+
 
 private:
 	static const std::string levelChoose[2][3];
@@ -49,6 +67,8 @@ private:
 	std::vector<cocos2d::Node*> starAimNode;
 	std::map<cocos2d::Node*, starWithDistacne*> starStarMap;
 	CircleMoveAction * act;
+
+	void callBack(Ref*);
 
 	void starLaunch();
 	bool onTouchBegan(Touch*, Event*);

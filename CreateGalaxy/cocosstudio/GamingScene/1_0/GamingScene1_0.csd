@@ -6,7 +6,18 @@
       <ObjectData Name="Scene" ctype="GameNodeObjectData">
         <Size X="960.0000" Y="640.0000" />
         <Children>
-          <AbstractNodeData Name="unLined" ActionTag="-1450365172" Tag="5" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" LeftMargin="-120.9600" RightMargin="-119.0400" TopMargin="-78.0160" BottomMargin="-81.9840" ctype="SpriteObjectData">
+          <AbstractNodeData Name="Lined_1" ActionTag="-1066364838" Tag="51" IconVisible="False" LeftMargin="-119.8295" RightMargin="-120.1705" TopMargin="-77.4756" BottomMargin="-82.5244" ctype="SpriteObjectData">
+            <Size X="1200.0000" Y="800.0000" />
+            <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+            <Position X="480.1705" Y="317.4756" />
+            <Scale ScaleX="0.7957" ScaleY="0.8145" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition X="0.5002" Y="0.4961" />
+            <PreSize X="1.2500" Y="1.2500" />
+            <FileData Type="Normal" Path="GamingScene/1_0/Lined.jpg" Plist="" />
+            <BlendFunc Src="770" Dst="771" />
+          </AbstractNodeData>
+          <AbstractNodeData Name="unLined" ActionTag="-1450365172" Tag="50" IconVisible="False" PositionPercentXEnabled="True" PositionPercentYEnabled="True" LeftMargin="-120.9600" RightMargin="-119.0400" TopMargin="-78.0160" BottomMargin="-81.9840" ctype="SpriteObjectData">
             <Size X="1200.0000" Y="800.0000" />
             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
             <Position X="479.0400" Y="318.0160" />

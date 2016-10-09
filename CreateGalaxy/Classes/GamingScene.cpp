@@ -5,13 +5,15 @@
 //  Created by Thomas and his friends on 2016/8/26.
 //
 //
-#include "GamingSCene.h"
+#include "GamingScene.h"
 #include "Star.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 #include "CircleAction.h"
 #include <iostream>
 #include <cmath>
+#include "ChooseLevelScene.h"
+#include "ChooseLevelScene_1.h"
 
 const std::string GamingScene::levelChoose[2][3] =
 {
@@ -177,7 +179,6 @@ void GamingScene::computerAim(std::vector<cocos2d::Node*>::iterator it)
 				starStarMap[*it]->star->disappear();
 				starStarMap[*it]->star = starSprite.back();
 				starStarMap[*it]->dis = dis;
-				score += static_cast<int>(dis / minDistance * 100);
 			}
 			else
 			{
@@ -210,10 +211,41 @@ std::vector<cocos2d::Node*>::iterator GamingScene::judgeAimed()
 	return it;
 }
 
+void GamingScene::callBack(Ref*)
+{
+	Director::getInstance()->replaceScene(ChooseLevelScene::createScene());
+}
 
 void GamingScene::gameEnd()
 {
 	_eventDispatcher->removeAllEventListeners();
 	log("gameEnd");
 	layerNode->getChildByTag(1)->setVisible(false);
+	layerNode->getChildByTag(50)->setVisible(false);
+
+	auto backLabel = Label::createWithTTF("Back", ".//fonts//Start.ttf", 50);
+	backLabel->setTextColor(Color4B::WHITE);
+	Menu * backMenu = Menu::createWithItem(MenuItemLabel::create(backLabel, CC_CALLBACK_1(GamingScene::callBack, this)));
+	backMenu->setPosition(Vec2(Director::getInstance()->getVisibleSize().width * 0.95, Director::getInstance()->getVisibleSize().height * 0.04));
+	addChild(backMenu);
+
+	for (auto it = starAimNode.begin(); it != starAimNode.end(); ++it)
+	{
+		if (starStarMap[*it] != nullptr)
+		{
+			score += ( minDistance / starStarMap[*it]->dis * 2 );
+		}
+	}
+
+	std::stringstream ss;
+	ss << score;
+	std::string scoreStr;
+	ss >> scoreStr;
+
+	std::string str = "Your score is " + scoreStr;
+	auto scoreLabel = Label::createWithTTF(str, ".//fonts//Start.ttf", 40);
+	scoreLabel->setPosition(Director::getInstance()->getVisibleSize().width / 2, Director::getInstance()->getVisibleSize().height / 2);
+	scoreLabel->setTextColor(Color4B::WHITE);
+	scoreLabel->setZOrder(5);
+	addChild(scoreLabel);
 }
